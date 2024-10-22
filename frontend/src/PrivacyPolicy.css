@@ -1,0 +1,48 @@
+.policy-container {
+  width:800px;
+  margin: 0 auto;
+}
+
+.policy-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.policy-container section {
+  margin: 1rem 0;
+  background-color: rgba(255, 255, 255, 0.45);
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 824px) {
+  .policy-container {
+    width:80%;
+  }
+}
+
+@media (max-width: 524px) {
+  .policy-container {
+    width:100%;
+  }
+
+  .policy-container section {
+    border-radius: 0;
+  }
+}
+
+.policy-container section p {
+  margin-top: 0.5rem;
+}
+
+.policy-container section li {
+  margin-top: 0.5rem;
+  display: list-item;
+  list-style-type: disc;
+  margin-left: 2rem;
+}
+
+.policy-container section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}

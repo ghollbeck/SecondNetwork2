@@ -1,0 +1,142 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container {
+  color: #464646;
+  background-color: #ffffff;
+  font-family: 'Avenir', sans-serif;
+  text-align: center;
+  padding: 0.8rem 0 0rem 0;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+
+@media (min-width: 1000px) {
+  .footer-container > * {
+    max-width: 1000px;
+    margin: auto;
+  }
+}
+
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 7.5%;
+}
+
+.contact-item {
+  text-align: left;
+  margin: 0 1rem;
+  opacity: 0.4;
+}
+
+.contact-item.right {
+  text-align: right;
+  opacity: 0.4;
+}
+
+.center-section {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.feedback-section {
+  margin-bottom: 0.4rem;
+  opacity: 0.5;
+}
+
+.feedback-section a {
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.feedback-section a:hover {
+  text-decoration: underline;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.contact-item p,
+.contact-item a {
+  margin: 0rem 3rem;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.icon-grey-transparent {
+  color: rgba(128, 128, 128, 0.5);
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 1024px) {
+  .contact-section {
+    padding: 0 4rem;
+  }
+
+  .contact-item {
+    margin: 0 0.5rem;
+  }
+
+  .feedback-section a {
+    font-size: 1rem;
+  }
+
+  .share-buttons {
+    gap: 1rem;
+  }
+
+  .contact-item p,
+  .contact-item a {
+    margin: 0 2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 0 2rem;
+  }
+
+  .contact-item {
+    margin: 0 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .feedback-section a {
+    font-size: 0.9rem;
+  }
+
+  .share-buttons {
+    gap: 0.5rem;
+  }
+
+  .contact-item p,
+  .contact-item a {
+    margin: 0 1rem;
+    font-size: 0.8rem;
+  }
+}

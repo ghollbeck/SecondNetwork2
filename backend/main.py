@@ -5,30 +5,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from auth import get_current_user, create_access_token
 from models import UserCreate, UserLogin, UserUpdate, User
 from database import db, get_user_by_email, create_user, verify_password
-from pydantic import BaseModel, Field
 import uvicorn
 import gridfs
-from fastapi.responses import StreamingResponse
 from pymongo import MongoClient
+from fastapi.responses import StreamingResponse  # Add this import
+
+
 
 from pydantic import BaseModel
 
-
-
-
-
 class BioUpdate(BaseModel):
     bio: str
-
-
-class CustomField(BaseModel):
-    title: str
-    text: str
-    isPublic: bool = Field(default=True)
-
-
-class CustomFieldsUpdate(BaseModel):
-    custom_fields: list[CustomField]
 
 
 
@@ -155,35 +142,6 @@ async def check_pdf(current_user: User = Depends(get_current_user)):
 
 
 
-@app.delete("/delete_pdf")
-async def delete_pdf(current_user: User = Depends(get_current_user)):
-    try:
-        # Fetch user from the database
-        user = get_user_by_email(current_user.email)
-        if not user or "pdf_id" not in user:
-            raise HTTPException(status_code=404, detail="No PDF associated with this user.")
-
-        # Get the PDF's GridFS ID
-        pdf_id = user["pdf_id"]
-
-        # Remove the file from GridFS
-        fs.delete(pdf_id)
-        print(f"PDF with ID {pdf_id} deleted successfully from GridFS.")
-
-        # Remove the PDF reference from the user's profile
-        db.users.update_one({"email": current_user.email}, {"$unset": {"pdf_id": "", "pdf_filename": ""}})
-        print(f"User profile updated, PDF reference removed for user: {current_user.email}")
-
-        return {"message": "PDF deleted successfully"}
-    except Exception as e:
-        print(f"Error during PDF deletion: {e}")
-        raise HTTPException(status_code=500, detail="Failed to delete PDF.")
-
-
-
-
-
-
 
 @app.put("/update_bio")
 async def update_bio(bio_update: BioUpdate, current_user: User = Depends(get_current_user)):
@@ -192,41 +150,6 @@ async def update_bio(bio_update: BioUpdate, current_user: User = Depends(get_cur
     print(f"Updated bio for user: {current_user.email}")
     updated_user = get_user_by_email(current_user.email)
     return {"message": "Bio updated successfully", "bio": updated_user["bio"]}
-
-
-
-
-
-@app.put("/update_custom_fields")
-async def update_custom_fields(custom_fields_update: CustomFieldsUpdate, current_user: User = Depends(get_current_user)):
-    # Convert CustomField Pydantic model to dictionary before storing in MongoDB
-    custom_fields_dicts = [field.dict() for field in custom_fields_update.custom_fields]
-    
-    # Add or update the user's custom fields
-    db.users.update_one(
-        {'email': current_user.email},
-        {'$set': {'custom_fields': custom_fields_dicts}}
-    )
-    print(f"Custom fields updated for user: {current_user.email}")
-    return {"message": "Custom fields updated successfully"}
-
-
-@app.delete("/delete_custom_field/{field_title}")
-async def delete_custom_field(field_title: str, current_user: User = Depends(get_current_user)):
-    # Remove a specific custom field by title
-    db.users.update_one(
-        {'email': current_user.email},
-        {'$pull': {'custom_fields': {'title': field_title}}}
-    )
-    print(f"Custom field '{field_title}' deleted for user: {current_user.email}")
-    return {"message": "Custom field deleted successfully"}
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":

@@ -23,21 +23,21 @@ const Search = () => {
 
   return (
     <div className="flex justify-center items-start h-screen">
-      <div className="bg-gray-100/10 rounded-3xl shadow-lg w-full max-w-xl p-6 mt-20">
-        <h1 className="text-3xl font-bold mb-4 text-center">Search Page</h1>
+      <div className="bg-gray-800/30 rounded-3xl  w-full max-w-xl p-6 mt-20">
+        <h1 className="text-3xl font-bold mb-4 text-center">Search Your Network</h1>
         <form onSubmit={handleSearch} className="relative mb-4">
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search..."
-            className={`w-full bg-[rgba(108,108,108,0.3)] rounded-full p-2 pl-4 text-white placeholder-white/80 focus:outline-none  ${
-              !query ? 'border border-[rgb(255,0,0,0)]' : ''
+            className={`w-full p-2 pl-4  rounded-full bg-white/70 placeholder-black/50 text-black  hover:bg-white transition-all duration-300 ease-in-out  focus:outline-none  ${
+                !query ? 'border border-[rgb(255,0,0,0)]' : ''
             }`}
-          />
+          /> 
           <button
             type="submit"
-            className="absolute right-0 top-0 bottom-0 my-auto flex items-center px-4 bg-black/30 text-white rounded-full hover:bg-white/50 hover:text-black transition-transform duration-500 transform "
+            className="absolute right-0 top-0 bottom-0 my-auto flex items-center px-4 bg-black/20 text-black border-[2px] rounded-full hover:bg-white hover:text-black transition-all duration-300 ease-in-out  "
             style={{ height: '100%' }}
           >
             Search

@@ -1,4 +1,5 @@
-import React, { useState, useRef,useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 
 
@@ -8,8 +9,8 @@ const DontFuckUp = () => {
   const firstPhrase = 'Welcome, <br />   lets build your own  <br /> ';
   const secondPhrase = "PayPal Mafia";
   const typewriterRef = useRef(null);
-
   const base = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+  const navigate = useNavigate();
 
   return (
     <div >
@@ -91,13 +92,19 @@ const DontFuckUp = () => {
          transition-opacity duration-1000 ${showSecondPhrase ? 'opacity-100' : 'opacity-0'}`}>
 
             <button 
-              onClick={() => window.location.href = `${base}/game`} 
-              className="bg-gradient-to-r from-[rgb(252,21,17)] to-[rgb(254,197,94)] text-white text-lg font-bold py-1 px-2 rounded-full mb-10
+              onClick={() => navigate('/login')} 
+              className="text-white text-lg font-bold py-1 px-2 rounded-full mb-10
                 hover:bg-gradient-to-r hover:from-[rgb(239,68,68)] hover:to-[rgb(236,72,153)] hover:scale-105 transition duration-200 xl:text-2xl xl:py-2 xl:px-4
-                hover:cursor-pointer"
+                hover:cursor-pointer bg-gradient-to-r from-blue-500 to-purple-500 "
             >
               Join now!
             </button>
+
+
+          
+          </div>
+          <div className="text-5xl font-bold text-white">
+            User Count: <span style={{ background: 'linear-gradient(to right, rgb(59, 130, 246), rgb(139, 92, 246))', WebkitBackgroundClip: 'text', color: 'transparent' }}>#389</span>
           </div>
     </div>
     

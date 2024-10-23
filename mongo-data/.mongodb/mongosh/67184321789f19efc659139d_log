@@ -73,3 +73,4 @@
 {"t":{"$date":"2024-10-23T00:32:42.070Z"},"s":"I","c":"MONGOSH","id":1000000007,"ctx":"repl","msg":"Evaluating input","attr":{"input":"db.replset.minvalid.drop();"}}
 {"t":{"$date":"2024-10-23T00:32:42.071Z"},"s":"I","c":"MONGOSH","id":1000000011,"ctx":"shell-api","msg":"Performed API call","attr":{"method":"getCollection","class":"Database","db":"secondnetwork","arguments":{"coll":"replset.minvalid"}}}
 {"t":{"$date":"2024-10-23T00:32:42.072Z"},"s":"I","c":"MONGOSH","id":1000000011,"ctx":"shell-api","msg":"Performed API call","attr":{"method":"drop","class":"Collection","db":"secondnetwork","coll":"replset.minvalid","arguments":{}}}
+{"t":{"$date":"2024-10-23T05:29:47.164Z"},"s":"I","c":"MONGOSH","id":1000000045,"ctx":"analytics","msg":"Flushed outstanding data","attr":{"flushError":"Trying to persist throttle state before userId is set","flushDuration":0}}

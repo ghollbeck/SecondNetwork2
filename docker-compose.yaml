@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-project1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: gabor_hollbeck
+      MONGO_INITDB_ROOT_PASSWORD: 1001
+    ports:
+      - "27018:27017"   # Mapping port 27017 inside container to 27018 on host
+    volumes:
+      - ./mongo-data:/data/db   # Optional: for persisting MongoDB data

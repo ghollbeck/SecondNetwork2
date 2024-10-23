@@ -81,7 +81,8 @@ body::before {
         height: 180%;
     }
     z-index: -1; /* Ensure the background is behind other content */
-    background: radial-gradient(circle at 20% -25%, rgba(255, 0, 0, 1) 0%, transparent 30%),
+    background: linear-gradient(to right, #a8d6ff, white);
+    /* background: radial-gradient(circle at 20% -25%, rgba(255, 0, 0, 1) 0%, transparent 30%),
                 radial-gradient(circle at 40% -30%, rgb(255, 208, 0,1) 10%, transparent 40%),
                 radial-gradient(circle at 40% -30%, rgb(255, 208, 0,1) 10%, transparent 30%),
                 radial-gradient(circle at 60% -30%, rgb(83, 248, 0) 0%, transparent 40%),
@@ -90,9 +91,10 @@ body::before {
                 radial-gradient(circle at 70% -20%, rgb(0, 225, 255,1) 0%, transparent 35%),
                 radial-gradient(circle at 70% -20%, rgb(0, 225, 255,1) 0%, transparent 35%),
                 radial-gradient(circle at 70% -20%, rgb(0, 225, 255,1) 10%, transparent 35%),
-                radial-gradient(circle at 10% 10%, rgba(0, 0, 0, 1) 0%, transparent 100%),
-                radial-gradient(circle at 10% 10%, rgba(0, 0, 0, 1) 0%, transparent 150%),
-                radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 1) 0%, transparent 220%);
+                radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 1) 0%, transparent 100%),
+                radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 1) 0%, transparent 150%),
+                radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 1) 0%, transparent 220%); */
+                
     background-color: rgb(0, 0, 0); /* Set the base background color */
     background-size: cover;
     background-attachment: fixed; /* Ensure the background stays fixed */
@@ -132,7 +134,6 @@ body::before {
 
 
   .App {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     /*background: linear-gradient(to right, #d4fc79, #96e6a1); /* Same gradient as body */
@@ -236,4 +237,25 @@ body::before {
    radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 1) 0%, transparent 220%);
 
   filter: blur(90px); /* Increase the blur radius */
+}
+
+
+/* Navbar.css or your relevant CSS file */
+.nav-button {
+  padding: 10px 15px; /* Adjust padding as needed */
+  text-decoration: none;
+  color: rgb(255, 255, 255); /* Default text color */
+  transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
+  line-height: 1.5; /* Set a consistent line height */
+  font-weight: normal; /* Default font weight */
+}
+
+.nav-button:hover {
+  font-weight: bold; /* Make text bold on hover */
+}
+
+.nav-button.active {
+  background-color: transparent; /* Make background transparent */
+  color: rgb(48, 48, 48); /* Change text color to dark grey */
+  font-weight: bold; /* Make text bold */
 }

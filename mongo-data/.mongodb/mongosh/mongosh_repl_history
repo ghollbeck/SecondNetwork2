@@ -1,0 +1,18 @@
+db.replset.minvalid.drop();
+db.replset.election.drop();
+db.settings.drop();
+db.tempusers.drop();
+db.temproles.drop();
+use secondnetwork;
+db.createUser({ user: "gabor_hollbeck", pwd: "1001", roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase"] });
+roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase"]
+user: "gabor_hollbeck", pwd: "1001",
+...    ]
+...       "readWriteAnyDatabase"
+...       { role: "userAdminAnyDatabase", db: "admin" },
+...    roles: [ 
+...    pwd: "1001",
+db.createUser({ ...    user: "gabor_hollbeck",
+db.createUser({ user: "admin", pwd: "password123", roles: [{ role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase"] });
+mongodb: /*localhost:27018*/ db.createUser({ user: "admin", pwd: "password123", roles: [{ role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase"] })
+mongosh mongodb://localhost:27018ost:27018

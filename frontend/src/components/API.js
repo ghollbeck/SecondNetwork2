@@ -1,7 +1,8 @@
 // src/components/API.js
 
-const base = 'http://localhost:8000'; // Adjust according to your backend URL
+const base = 'http://localhost:8000'; // Ensure this matches your backend URL
 
+// Register User
 const registerUser = async (username, email, password, bio) => {
     const response = await fetch(`${base}/register`, {
       method: 'POST',
@@ -25,9 +26,9 @@ const registerUser = async (username, email, password, bio) => {
     }
     return data;
   };
-  
-  // Similarly update loginUser
-  const loginUser = async (email, password) => {
+
+// Login User
+const loginUser = async (email, password) => {
     const response = await fetch(`${base}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -50,8 +51,8 @@ const registerUser = async (username, email, password, bio) => {
     localStorage.setItem('token', data.access_token);
     return data;
   };
-  
 
+// Get Profile
 const getProfile = async () => {
   const token = localStorage.getItem('token');
   const response = await fetch(`${base}/profile`, {
@@ -64,6 +65,7 @@ const getProfile = async () => {
   return data;
 };
 
+// Update Profile
 const updateProfile = async (updates) => {
   const token = localStorage.getItem('token');
   const response = await fetch(`${base}/profile`, {
@@ -81,6 +83,7 @@ const updateProfile = async (updates) => {
   return data;
 };
 
+// Download PDF
 const downloadPDF = async () => {
     const token = localStorage.getItem('token');
     try {
@@ -130,6 +133,7 @@ const downloadPDF = async () => {
     }
 };
 
+// Update Bio
 const updateBio = async (bio) => {
     const token = localStorage.getItem('token');
     try {
@@ -155,8 +159,7 @@ const updateBio = async (bio) => {
     }
 };
 
-
-
+// Check PDF
 const checkPDF = async () => {
     const token = localStorage.getItem('token');
     try {
@@ -179,8 +182,7 @@ const checkPDF = async () => {
     }
 };
 
-
-
+// Delete PDF
 const deletePDF = async () => {
     const token = localStorage.getItem('token');
     try {
@@ -202,8 +204,8 @@ const deletePDF = async () => {
       throw error;
     }
   };
-  
 
+// Update Custom Fields
 const updateCustomFields = async (customFields) => {
     const token = localStorage.getItem('token');
     try {
@@ -229,6 +231,7 @@ const updateCustomFields = async (customFields) => {
     }
 };
 
+// Delete Custom Field
 const deleteCustomField = async (fieldTitle) => {
     const token = localStorage.getItem('token');
     try {
@@ -252,11 +255,4 @@ const deleteCustomField = async (fieldTitle) => {
     }
 };
 
-
-
-
-
-
-
-
-export { registerUser, loginUser, getProfile, updateProfile, downloadPDF, updateBio, checkPDF,deletePDF, updateCustomFields, deleteCustomField};
+export { registerUser, loginUser, getProfile, updateProfile, downloadPDF, updateBio, checkPDF, deletePDF, updateCustomFields, deleteCustomField };

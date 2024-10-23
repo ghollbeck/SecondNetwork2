@@ -20,7 +20,9 @@ export const AuthProvider = ({ children }) => {
         const userData = await getProfile();
         setUser(userData);
       } catch (error) {
+        console.error('Failed to fetch profile:', error);
         setUser(null);
+        localStorage.removeItem('token'); // Remove invalid token
       }
     };
 
